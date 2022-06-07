@@ -1,0 +1,88 @@
+@import "../variable.scss";
+@import "../mixins.scss";
+
+.loginreg-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 200px 0;
+  @include medium {
+    padding: 100px 0;
+  }
+  .loginreg-wrapper-inner {
+    width: $content-width;
+    display: flex;
+    @include medium {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+    }
+    .col-1,
+    .col-2 {
+      display: flex;
+      width: 50%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      @include medium {
+        width: 100%;
+      }
+    }
+    .col-1 {
+      justify-content: flex-start;
+      @include medium {
+        margin-bottom: 80px;
+        text-align: center;
+      }
+    }
+    .col-2 {
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 345px;
+
+        @include mobile {
+          width: 100%;
+        }
+        .loginreg-title {
+          width: 100%;
+          h4 {
+            margin-bottom: 10px;
+            text-align: left;
+          }
+        }
+
+        .input_wrapper {
+          width: 100%;
+          min-height: 70px;
+          input {
+            padding: 10px 10px;
+            width: 100%;
+            border: 1px solid;
+            border-radius: 5px;
+          }
+        }
+        .loginreg-button {
+          cursor: pointer;
+          width: 100%;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          background-color: $s-color;
+        }
+        .loginreg-cta {
+          cursor: pointer;
+          width: 100%;
+          padding: 25px;
+          border: none;
+          background-color: transparent;
+          color: $link-color;
+        }
+      }
+    }
+  }
+}

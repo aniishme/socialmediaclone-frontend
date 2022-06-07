@@ -1,0 +1,37 @@
+@import "../variable.scss";
+@import "../mixins.scss";
+
+.post-wrapper {
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: $sec-bg-color;
+  margin-bottom: 60px;
+  .post-profile {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    .post-profile-image {
+      margin-right: 10px;
+    }
+    .post-profile-name {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+  .post-title {
+    margin: 20px 0;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .post-image-wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    img {
+      max-width: 600px;
+      max-height: 500px;
+      width: auto;
+      height: auto;
+    }
+  }
+}

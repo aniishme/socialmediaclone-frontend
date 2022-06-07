@@ -1,0 +1,68 @@
+@import "../variable.scss";
+@import "../mixins.scss";
+
+.layout-wrapper {
+  margin-top: 70px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: $bg-color;
+  color: white;
+
+  .layout-inner {
+    margin-top: 30px;
+    width: 80%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 20% auto;
+    @include medium {
+      width: 90%;
+    }
+    @include tablet {
+      width: 100%;
+    }
+    .sidebar-wrapper,
+    .content-wrapper {
+      padding: 10px;
+    }
+    .content-wrapper {
+      margin-left: 250px;
+      width: 700px;
+      @include medium {
+        margin-left: 75px;
+      }
+    }
+    .sidebar-wrapper {
+      border-right: 1px solid white;
+      margin-right: 20px;
+      position: fixed;
+      a {
+        text-decoration: none;
+        color: $p-color;
+      }
+      .siderbar-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+        width: fit-content;
+        border-radius: 9999px;
+        margin-bottom: 10px;
+
+        &:hover {
+          background-color: black;
+        }
+        @include medium {
+          span {
+            display: none;
+          }
+        }
+        span {
+          margin-left: 20px;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

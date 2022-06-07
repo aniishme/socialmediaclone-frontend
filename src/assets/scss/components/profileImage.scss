@@ -1,0 +1,10 @@
+@import "../variable.scss";
+@import "../mixins.scss";
+
+.profile-image {
+  img {
+    border-radius: 50%;
+    height: 180px;
+    width: 180px;
+  }
+}
