@@ -1,0 +1,22 @@
+@import "../variable.scss";
+@import "../mixins.scss";
+
+.interaction-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .interaction {
+    display: inline-flex;
+    cursor: pointer;
+    svg {
+      padding: 1px;
+    }
+    &:hover {
+      color: $nav-color;
+    }
+    .interaction-count {
+      margin-left: 10px;
+    }
+  }
+}

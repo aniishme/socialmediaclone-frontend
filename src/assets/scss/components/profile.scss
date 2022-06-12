@@ -1,0 +1,60 @@
+@import "../variable.scss";
+@import "../mixins.scss";
+
+.profile-wrapper {
+  .main-profile {
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-areas:
+      "image button"
+      "profile profile";
+    align-items: center;
+    .main-profile-image {
+      grid-area: image;
+    }
+    .edit-profile-button {
+      grid-area: button;
+      text-align: right;
+      padding: 20px;
+    }
+    .profile-details {
+      grid-area: profile;
+      margin: 20px 0;
+      padding: 10px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      .profile-username {
+        font-size: 14px;
+      }
+      .follow-details {
+        display: flex;
+        div {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+.profile-posts {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+  .select-posts {
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    &:hover {
+      background-color: $sec-bg-color;
+    }
+  }
+  .select-posts-active {
+    background-color: $sec-bg-color;
+  }
+}

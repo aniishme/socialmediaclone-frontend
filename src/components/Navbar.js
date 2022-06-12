@@ -6,14 +6,14 @@ function Navbar() {
     <div className="nav-wrapper">
       <div className="nav-inner">
         <div className="nav-logo">
-          <h2>RAG</h2>
+          <h2>AstroXD</h2>
         </div>
         <div className="nav-menu">
           <div className="nav-search-wrapper">
             <span>
               <AiOutlineSearch className="nav-search-icon" size="20px" />
             </span>
-            <input type="text" placeholder="Search RAG"></input>
+            <input type="text" placeholder="Search AstroXD"></input>
           </div>
 
           <div className="nav-profile-wrapper"></div>

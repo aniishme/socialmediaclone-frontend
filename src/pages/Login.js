@@ -61,8 +61,9 @@ function Login() {
     <div className="loginreg-wrapper">
       <div className="loginreg-wrapper-inner">
         <div className="col-1">
-          <h1>Welcome To RAG</h1>
+          <h1>Welcome To AstroXD</h1>
           <p>Your Journey Begins Here</p>
+          <p>Space and Beyond</p>
         </div>
         <div className="col-2">
           <form className="loginreg-form">

@@ -2,13 +2,18 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 
-import { AiOutlineHome, AiOutlineMessage } from "react-icons/ai";
+import {
+  AiOutlineHome,
+  AiOutlineMessage,
+  AiOutlineLogout,
+} from "react-icons/ai";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 
 import "../assets/scss/components/layout.scss";
-
+import { useSelector } from "react-redux";
 function Layout({ children, style }) {
+  const { user } = useSelector((state) => state.authReducer);
   const logoutHandler = (e) => {
     e.preventDefault();
     localStorage.removeItem("state");
@@ -41,13 +46,16 @@ function Layout({ children, style }) {
                 <span>Messages</span>
               </div>
             </Link>
-            <Link to="/profile">
+            <Link to={"/" + user.id}>
               <div className="siderbar-item">
                 <CgProfile size="24px" />
                 <span>Profile</span>
               </div>
             </Link>
-            <button onClick={logoutHandler}>Logout</button>
+            <div className="siderbar-item" onClick={logoutHandler}>
+              <AiOutlineLogout size="24px" />
+              <span>Logout</span>
+            </div>
           </div>
           <div className="content-wrapper">{children}</div>
         </div>

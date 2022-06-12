@@ -15,7 +15,8 @@ export const loginHandler = (data) => {
         toast.success("Login Success!!!");
         dispatch({
           type: authActionTypes.LOGIN_SUCCESS,
-          token: res.data,
+          token: res.data.token,
+          user: res.data.acc,
         });
       }
     } catch (error) {

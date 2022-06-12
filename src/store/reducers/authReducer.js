@@ -5,6 +5,7 @@ const initialState = {
   loading: false,
   message: "",
   auth: false,
+  user: {},
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -21,6 +22,7 @@ export const authReducer = (state = initialState, action) => {
         loading: false,
         auth: true,
         message: "Login Success",
+        user: action.user,
       };
     case authActionTypes.LOGIN_ERROR:
       return {

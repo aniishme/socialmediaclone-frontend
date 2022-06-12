@@ -11,6 +11,7 @@ import CustomRoutes from "./components/CustomRoutes";
 
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
+import CreatePost from "./components/CreatePost";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -24,7 +25,7 @@ function App() {
         <Route exact path="/" element={authState.auth ? <Home /> : <Login />} />
         {/* <Route exact path="/" element={<Home />}></Route> */}
         <Route exact path="/" element={<ProtectedRoute />}>
-          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path=":userId" element={<Profile />} />
         </Route>
       </CustomRoutes>
     </div>
