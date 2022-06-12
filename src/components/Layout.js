@@ -58,9 +58,7 @@ function Layout({ children, style }) {
             </div>
           </div>
           <div className="content-wrapper">{children}</div>
-          <div className="rightbar-wrapper">
-            <h3>People You May Know</h3>
-          </div>
+          <div className="rightbar-wrapper"></div>
         </div>
       </div>
     </div>
