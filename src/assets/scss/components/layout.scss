@@ -15,8 +15,8 @@
     margin-top: 30px;
     width: 80%;
     max-width: 1200px;
-    display: grid;
-    grid-template-columns: 20% auto;
+    display: flex;
+
     @include medium {
       width: 90%;
     }
@@ -24,20 +24,19 @@
       width: 100%;
     }
     .sidebar-wrapper,
+    .rightbar-wrapper {
+      padding: 10px;
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
     .content-wrapper {
+      width: 620px;
       padding: 10px;
     }
-    .content-wrapper {
-      margin-left: 250px;
-      width: 620px;
-      @include medium {
-        margin-left: 75px;
-      }
-    }
     .sidebar-wrapper {
-      border-right: 1px solid white;
       margin-right: 20px;
-      position: fixed;
+
       a {
         text-decoration: none;
         color: $p-color;
@@ -64,6 +63,9 @@
           font-size: 20px;
         }
       }
+    }
+    .rightbar-wrapper {
+      margin-left: 20px;
     }
   }
 }

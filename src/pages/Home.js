@@ -16,6 +16,15 @@ function Home() {
           </div>
         </div>
         <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
       </Layout>
     </div>
   );
