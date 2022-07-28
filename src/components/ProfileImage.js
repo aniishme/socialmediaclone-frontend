@@ -5,7 +5,7 @@ function ProfileImage({ size }) {
     <div className="profile-image">
       <img
         style={{ height: size, width: size }}
-        src="https://pbs.twimg.com/profile_images/1240654311199133696/a65_QMnN_400x400.jpg"
+        src="https://picsum.photos/200"
         alt="profile-image"
       />
     </div>

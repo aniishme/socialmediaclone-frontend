@@ -2,6 +2,7 @@
 @import "../mixins.scss";
 
 .profile-image {
+  cursor: pointer;
   img {
     border-radius: 50%;
     height: 180px;

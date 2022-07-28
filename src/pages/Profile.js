@@ -3,17 +3,21 @@ import { useParams } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import Post from "../components/Post";
+
 import ProfileImage from "../components/ProfileImage";
 
 import "../assets/scss/components/profile.scss";
 import { useSelector } from "react-redux";
+
 function Profile() {
   const [postOptions, setpostOptions] = useState(true);
   const { user } = useSelector((state) => state.authReducer);
+  const { posts } = useSelector((state) => state.postReducer);
   const { userId } = useParams();
   const [owner, setOwner] = useState(userId === user.id ? true : false);
-
-  useEffect(() => {}, [userId]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <>
       <Layout>
@@ -67,8 +71,14 @@ function Profile() {
             Liked Posts
           </div>
         </div>
+
         <div className="posts">
-          <Post />
+          {posts
+            .slice(0)
+            .reverse()
+            .map((item) => {
+              return <Post post={item.content} key={`profile${item._id}`} />;
+            })}
         </div>
       </Layout>
     </>

@@ -11,6 +11,10 @@
   .create-post {
     margin-left: 30px;
     align-self: center;
+    display: flex;
+  }
+  .button {
+    align-self: flex-start;
   }
 }
 

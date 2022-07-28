@@ -1,21 +1,40 @@
+//Packages
 import { Route } from "react-router-dom";
-
 import { Toaster } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
-import { useSelector } from "react-redux";
-
-import Home from "./pages/Home";
-
+//Routes
 import ProtectedRoute from "./components/ProtectedRoute";
 import CustomRoutes from "./components/CustomRoutes";
 
+//Pages
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
-import CreatePost from "./components/CreatePost";
+import Home from "./pages/Home";
+import Message from "./pages/Message";
+import Notification from "./pages/Notification";
+import { useEffect } from "react";
+import { getPostHandler } from "./store/actions/posts/postAction";
 
 function App() {
-  const token = localStorage.getItem("token");
   const authState = useSelector((state) => state.authReducer);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    axios.interceptors.request.use((request) => {
+      // add auth header with jwt if account is logged in and request is to the api url
+      const token = `${authState.token && authState.token.accessToken}`;
+
+      if (token) {
+        request.headers.common.Authorization = `Bearer ${token}`;
+      }
+
+      return request;
+    });
+    if (authState.token) {
+      dispatch(getPostHandler());
+    }
+  }, [authState]);
 
   return (
     <div className="App">
@@ -25,6 +44,8 @@ function App() {
         <Route exact path="/" element={authState.auth ? <Home /> : <Login />} />
         {/* <Route exact path="/" element={<Home />}></Route> */}
         <Route exact path="/" element={<ProtectedRoute />}>
+          <Route exact path="/notifications" element={<Notification />} />
+          <Route exact path="messages" element={<Message />} />
           <Route exact path=":userId" element={<Profile />} />
         </Route>
       </CustomRoutes>

@@ -2,13 +2,14 @@
 @import "../mixins.scss";
 
 .post-wrapper {
-  padding: 30px 20px;
+  padding: 30px 20px 20px 20px;
   border-radius: 10px;
   background-color: $sec-bg-color;
   margin-bottom: 60px;
 
   .post-content {
     cursor: pointer;
+    padding-bottom: 5px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     .post-profile {
       cursor: pointer;

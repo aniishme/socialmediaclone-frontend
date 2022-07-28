@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./reducers/authReducer";
-
+import { postReducer } from "./reducers/postReducer";
 const loadState = () => {
   try {
     const serializedState = localStorage.getItem("state");
@@ -16,7 +16,7 @@ const loadState = () => {
 const saveState = (state) => {
   try {
     if (state.authReducer.auth) {
-      const serializedState = JSON.stringify(state);
+      const serializedState = JSON.stringify(state.authReducer);
       localStorage.setItem("state", serializedState);
     }
   } catch {
@@ -26,8 +26,8 @@ const saveState = (state) => {
 
 const store = configureStore(
   {
-    reducer: { authReducer },
-    preloadedState: loadState(),
+    reducer: { authReducer: authReducer, postReducer: postReducer },
+    preloadedState: { authReducer: loadState() },
   },
 
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

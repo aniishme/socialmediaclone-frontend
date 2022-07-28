@@ -4,27 +4,30 @@ import Post from "../components/Post";
 import ProfileImage from "../components/ProfileImage";
 
 import "../assets/scss/components/home.scss";
+
+import { useSelector } from "react-redux";
+import { getPostHandler } from "../store/actions/posts/postAction";
+import { useEffect, useMemo } from "react";
+
 function Home() {
+  const { posts } = useSelector((state) => state.postReducer);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div>
       <Layout>
         <div className="create-post-wrapper">
           <ProfileImage size={50} />
 
-          <div className="create-post">
-            <CreatePost />
-          </div>
+          <CreatePost />
         </div>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        {posts
+          .slice(0)
+          .reverse()
+          .map((item) => {
+            return <Post post={item.content} key={`home${item._id}`} />;
+          })}
       </Layout>
     </div>
   );

@@ -36,6 +36,9 @@
     }
     .sidebar-wrapper {
       margin-right: 20px;
+      @include tablet {
+        display: none;
+      }
       a {
         text-decoration: none;
         color: $p-color;

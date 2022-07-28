@@ -1,0 +1,14 @@
+.comment-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+  .comment-input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+  }
+}

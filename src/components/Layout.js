@@ -12,6 +12,7 @@ import { CgProfile } from "react-icons/cg";
 
 import "../assets/scss/components/layout.scss";
 import { useSelector } from "react-redux";
+
 function Layout({ children, style }) {
   const { user } = useSelector((state) => state.authReducer);
   const logoutHandler = (e) => {
@@ -58,7 +59,6 @@ function Layout({ children, style }) {
             </div>
           </div>
           <div className="content-wrapper">{children}</div>
-          <div className="rightbar-wrapper"></div>
         </div>
       </div>
     </div>
