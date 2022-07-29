@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 import Layout from "../components/Layout";
 import Post from "../components/Post";
@@ -14,72 +15,105 @@ function Profile() {
   const { user } = useSelector((state) => state.authReducer);
   const { posts } = useSelector((state) => state.postReducer);
   const { userId } = useParams();
-  const [owner, setOwner] = useState(userId === user.id ? true : false);
+  const [profileData, setProfileData] = useState({});
+  const [error, setError] = useState(false);
+
   useEffect(() => {
+    setError(false);
     window.scrollTo(0, 0);
-  });
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/profile/${userId}`)
+      .then((res) => {
+        console.log(res.data);
+        setProfileData(res.data);
+      })
+      .catch((err) => {
+        setError(true);
+      });
+  }, [userId]);
+
   return (
     <>
       <Layout>
-        <div className="profile-wrapper">
-          <div className="cover-image"></div>
-          <div className="main-profile">
-            <div className="main-profile-image">
-              <ProfileImage />
+        {error ? (
+          <h1>
+            USER DOESNOT EXISTS
+            <br />
+            404
+          </h1>
+        ) : (
+          <>
+            <div className="profile-wrapper">
+              <div className="cover-image"></div>
+              <div className="main-profile">
+                <div className="main-profile-image">
+                  <ProfileImage />
+                </div>
+                <div className="edit-profile-button">
+                  {userId === user.id ? (
+                    <button type="button" className="button">
+                      Edit Profile
+                    </button>
+                  ) : (
+                    <button type="button" className="button">
+                      Follow
+                    </button>
+                  )}
+                </div>
+
+                <div className="profile-details">
+                  <div className="profile-name">
+                    <h3 className="profile-fullname">{profileData.name}</h3>
+                    <span className="profile-username light-text">
+                      @{profileData.id}
+                    </span>
+                  </div>
+                  <div className="follow-details">
+                    <div>
+                      {profileData.info && profileData.info.following.length}{" "}
+                      <span className="light-text">Following</span>
+                    </div>
+                    <div>
+                      {profileData.info && profileData.info.followers.length}{" "}
+                      <span className="light-text">Followers</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="edit-profile-button">
-              {owner ? (
-                <button type="button" className="button">
-                  Edit Profile
-                </button>
-              ) : (
-                <button type="button" className="button">
-                  Follow
-                </button>
-              )}
+            <div className="profile-posts">
+              <div
+                className={
+                  postOptions
+                    ? "select-posts select-posts-active"
+                    : "select-posts"
+                }
+              >
+                Posts
+              </div>
+              <div
+                className={
+                  postOptions
+                    ? "select-posts"
+                    : "select-posts select-posts-active"
+                }
+              >
+                Liked Posts
+              </div>
             </div>
 
-            <div className="profile-details">
-              <div className="profile-name">
-                <h3 className="profile-fullname">{user.name}</h3>
-                <span className="profile-username light-text">@{user.id}</span>
-              </div>
-              <div className="follow-details">
-                <div>
-                  70 <span className="light-text">Following</span>
-                </div>
-                <div>
-                  40 <span className="light-text">Followers</span>
-                </div>
-              </div>
+            <div className="posts">
+              {profileData.post
+                ? profileData.post
+                    .slice(0)
+                    .reverse()
+                    .map((item) => {
+                      return <Post post={item} key={`profile${item._id}`} />;
+                    })
+                : "No Posts Found"}
             </div>
-          </div>
-        </div>
-        <div className="profile-posts">
-          <div
-            className={
-              postOptions ? "select-posts select-posts-active" : "select-posts"
-            }
-          >
-            Posts
-          </div>
-          <div
-            className={
-              postOptions ? "select-posts" : "select-posts select-posts-active"
-            }
-          >
-            Liked Posts
-          </div>
-        </div>
-
-        <div className="posts">
-          {posts
-            .slice(0)
-            .reverse()
-            .map((item) => {
-              return <Post post={item.content} key={`profile${item._id}`} />;
-            })}
-        </div>
+          </>
+        )}
       </Layout>
     </>
   );

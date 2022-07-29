@@ -9,7 +9,10 @@ export const loginHandler = (data) => {
         type: authActionTypes.LOGIN_START,
       });
 
-      const res = await axios.post("http://localhost:8000/auth/login", data);
+      const res = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/auth/login`,
+        data
+      );
 
       if (res.status === 200) {
         toast.success("Login Success!!!");

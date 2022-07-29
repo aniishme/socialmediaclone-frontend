@@ -11,7 +11,7 @@ export const createPostHandler = (data) => {
       });
       if (data) {
         const res = await axios.post(
-          "http://localhost:8000/posts/create-post",
+          `${process.env.REACT_APP_BASE_URL}/posts/create-post`,
           data
         );
         if (res.status === 201) {
@@ -37,7 +37,7 @@ export const getPostHandler = () => {
       dispatch({
         type: postTypes.GET_POST,
       });
-      const res = await axios.get("http://localhost:8000/posts/");
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/`);
       console.log(res.data);
       dispatch({
         type: postTypes.GET_POST_SUCCESS,

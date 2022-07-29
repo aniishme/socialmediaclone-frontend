@@ -20,6 +20,8 @@ import { getPostHandler } from "./store/actions/posts/postAction";
 function App() {
   const authState = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
+
+  console.log(process.env.REACT_APP_BASE_URL);
   useEffect(() => {
     axios.interceptors.request.use((request) => {
       // add auth header with jwt if account is logged in and request is to the api url
@@ -46,7 +48,7 @@ function App() {
         <Route exact path="/" element={<ProtectedRoute />}>
           <Route exact path="/notifications" element={<Notification />} />
           <Route exact path="messages" element={<Message />} />
-          <Route exact path=":userId" element={<Profile />} />
+          <Route exact path="/user/:userId" element={<Profile />} />
         </Route>
       </CustomRoutes>
     </div>

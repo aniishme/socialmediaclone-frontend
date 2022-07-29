@@ -34,7 +34,7 @@ function Login() {
       password: password,
     };
     await axios
-      .post("http://localhost:8000/auth/register", user)
+      .post(`${process.env.REACT_APP_BASE_URL}/auth/register`, user)
       .then((res) => {
         toast.success("User Created | Login to Contiue");
         setLogReg("login");

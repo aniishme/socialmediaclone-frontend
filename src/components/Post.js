@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/scss/components/post.scss";
 
 import Interaction from "./Interaction";
@@ -12,10 +13,12 @@ function Post({ post }) {
           <div className="post-profile-image">
             <ProfileImage size={50} />
           </div>
-          <h4 className="post-profile-name">Anish Sharma</h4>
+          <h4 className="post-profile-name">
+            <Link to={`/user/${post.userId}`}>{post.username}</Link>
+          </h4>
         </div>
         <div className="post-title">
-          {post.map((item) => {
+          {post.content.map((item) => {
             return <p key={item.key}>{item.text}</p>;
           })}
         </div>

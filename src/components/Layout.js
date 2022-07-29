@@ -47,7 +47,7 @@ function Layout({ children, style }) {
                 <span>Messages</span>
               </div>
             </Link>
-            <Link to={"/" + user.id}>
+            <Link to={"/user/" + user.id}>
               <div className="siderbar-item">
                 <CgProfile size="24px" />
                 <span>Profile</span>

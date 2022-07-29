@@ -26,7 +26,7 @@ function Home() {
           .slice(0)
           .reverse()
           .map((item) => {
-            return <Post post={item.content} key={`home${item._id}`} />;
+            return <Post post={item} key={`home${item._id}`} />;
           })}
       </Layout>
     </div>

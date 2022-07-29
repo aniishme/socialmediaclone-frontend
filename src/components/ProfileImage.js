@@ -5,7 +5,7 @@ function ProfileImage({ size }) {
     <div className="profile-image">
       <img
         style={{ height: size, width: size }}
-        src="https://picsum.photos/200"
+        src="https://via.placeholder.com/200"
         alt="profile-image"
       />
     </div>

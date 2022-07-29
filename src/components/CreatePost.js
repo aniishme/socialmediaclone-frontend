@@ -30,6 +30,7 @@ const CreatePost = ({ getState }) => {
     const payload = {
       content: finalPost,
       userId: user.id,
+      username: user.name,
       _id: finalPost[0].key,
     };
     dispatch(createPostHandler(payload));
