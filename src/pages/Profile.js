@@ -11,9 +11,8 @@ import "../assets/scss/components/profile.scss";
 import { useSelector } from "react-redux";
 
 function Profile() {
-  const [postOptions, setpostOptions] = useState(true);
+  const [postOptions] = useState(true);
   const { user, token } = useSelector((state) => state.authReducer);
-  const { posts } = useSelector((state) => state.postReducer);
   const { userId } = useParams();
   const [profileData, setProfileData] = useState({});
   const [error, setError] = useState(false);
@@ -34,7 +33,7 @@ function Profile() {
       .catch((err) => {
         setError(true);
       });
-  }, [userId]);
+  }, [userId, token.accessToken]);
 
   return (
     <>

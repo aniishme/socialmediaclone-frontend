@@ -4,14 +4,13 @@ import { Editor, EditorState } from "draft-js";
 
 import "draft-js/dist/Draft.css";
 
-import { convertToHTML } from "draft-convert";
 import { convertToRaw } from "draft-js";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { createPostHandler } from "../store/actions/posts/postAction";
 
-const CreatePost = ({ getState }) => {
+const CreatePost = () => {
   const { user } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const [editorState, setEditorState] = useState(() =>

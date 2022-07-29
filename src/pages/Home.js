@@ -6,8 +6,8 @@ import ProfileImage from "../components/ProfileImage";
 import "../assets/scss/components/home.scss";
 
 import { useSelector } from "react-redux";
-import { getPostHandler } from "../store/actions/posts/postAction";
-import { useEffect, useMemo } from "react";
+
+import { useEffect } from "react";
 
 function Home() {
   const { posts } = useSelector((state) => state.postReducer);

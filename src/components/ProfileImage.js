@@ -6,7 +6,7 @@ function ProfileImage({ size }) {
       <img
         style={{ height: size, width: size }}
         src="https://via.placeholder.com/200"
-        alt="profile-image"
+        alt="profile"
       />
     </div>
   );
