@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 function Message() {
   return (
     <div>
-      <Layout>Message</Layout>
+      <Layout>Under Construction</Layout>
     </div>
   );
 }

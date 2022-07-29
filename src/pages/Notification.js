@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 function Notification() {
   return (
     <div>
-      <Layout>Notification</Layout>
+      <Layout>Under Construction</Layout>
     </div>
   );
 }

@@ -11,8 +11,8 @@ import { loginHandler } from "../store/actions/auth/authAction";
 function Login() {
   const [logReg, setLogReg] = useState("login");
   const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("guest@gmail.com");
+  const [password, setPassword] = useState("guest123");
 
   const authState = useSelector((state) => state.authReducer);
 
@@ -33,6 +33,7 @@ function Login() {
       email: email,
       password: password,
     };
+    toast.success("Creating User...");
     await axios
       .post(`${process.env.REACT_APP_BASE_URL}/auth/register`, user)
       .then((res) => {

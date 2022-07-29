@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 
 function Profile() {
   const [postOptions, setpostOptions] = useState(true);
-  const { user } = useSelector((state) => state.authReducer);
+  const { user, token } = useSelector((state) => state.authReducer);
   const { posts } = useSelector((state) => state.postReducer);
   const { userId } = useParams();
   const [profileData, setProfileData] = useState({});
@@ -22,7 +22,11 @@ function Profile() {
     setError(false);
     window.scrollTo(0, 0);
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/profile/${userId}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/profile/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token.accessToken}`,
+        },
+      })
       .then((res) => {
         console.log(res.data);
         setProfileData(res.data);
