@@ -36,7 +36,7 @@ function App() {
     if (authState.token) {
       dispatch(getPostHandler());
     }
-  }, [authState]);
+  }, [authState, dispatch]);
 
   return (
     <div className="App">

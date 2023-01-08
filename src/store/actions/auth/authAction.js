@@ -11,7 +11,13 @@ export const loginHandler = (data) => {
 
       const res = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/auth/login`,
-        data
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Allow-Control-Allow-Origin": "*",
+          },
+        }
       );
 
       if (res.status === 200) {
